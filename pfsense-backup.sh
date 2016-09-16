@@ -66,8 +66,8 @@ then
     echo "Success backup"
     if [ "$mail" != "" ]
     then
-      echo "Backup successfully completed at `date` to host $host" > message.txt
-      echo `ls -l $host` >> message.txt
+      echo -e "Backup successfully completed at `date` to host $host\n\n" > message.txt
+      echo "`ls -l $host`" >> message.txt
       mutt -s "Backup of $host ($xml_file)" -a "$host/$xml_file.gz" -- $mail < message.txt
     fi
 else
